@@ -12,6 +12,8 @@
             border-radius: 5px;
             overflow-x: auto;
             max-width: 100%;
+            white-space: pre-wrap; /* To wrap long lines of code */
+            word-wrap: break-word; /* Allow code lines to break */
         }
         /* Button to copy */
         .copy-btn {
@@ -30,30 +32,20 @@
 
     <!-- Code block with a copy button -->
     <pre id="codeBlock">
-        <code>
+<code>
 import keras
 from keras import layers
 from keras import ops
 from keras import models
 import numpy as np
+
 inputs = keras.Input(shape=(784,))
 dense = layers.Dense(64, activation="relu")
 x = dense(inputs)
 x = layers.Dense(64, activation="relu")(x)
-# outputs = layers.Dense(10)(x)
-# model = keras.Model(inputs=inputs, outputs=outputs, name="mnist_model")
 
 encoder_input = layers.Input(shape=(3, 3))
 random_input = np.random.random((2, 3, 3)) 
-
-# dense1 = layers.Dense(64, activation="relu")(encoder_input)
-# dense2 = layers.Dense(64, activation="relu")(dense1)
-# output = layers.Dense(64, activation="relu")(dense1)
-# model = keras.Model(inputs=encoder_input, outputs=output, name="hi")
-# print(model.summary())
-# print(model(random_input))
-
-
 
 def generate_data(batch_size=100):
     X = np.random.rand(batch_size, 3, 4).astype(np.float32)  # Random tensors with shape (batch_size, 3, 4)
@@ -89,6 +81,7 @@ def find_nearest(array, value):
     for i in range(len(array)):
         l.append(abs(array[i])-value)
     return(min(l)+value)
+
 x1 = []
 x2 = []
 x3 = []
@@ -114,8 +107,9 @@ for i in range(len(X_test)):
     print(f"Actual value: {y_test[i]}")
     print(f"Loss: {predictions[i]-y_test[i]}")
     print("---")
-        </code>
+</code>
     </pre>
+
     <button class="copy-btn" onclick="copyCode()">Copy Code</button>
 
     <script>
