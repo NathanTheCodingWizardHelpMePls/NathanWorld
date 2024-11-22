@@ -1,10 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Welcome to NathanWorld</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copyable Code Example</title>
+    <style>
+        /* Style for the code block */
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            max-width: 100%;
+        }
+        /* Button to copy */
+        .copy-btn {
+            margin-top: 10px;
+            padding: 8px 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, Welcome to NathanWorld!</h1>
-    <p>This is my GitHub Pages site.</p>
+    <h1>Example of Copyable Code</h1>
+
+    <!-- Code block with a copy button -->
+    <pre id="codeBlock">
+        <code>
+# Example Python Code
+def hello_world():
+    print("Hello, World!")
+        </code>
+    </pre>
+    <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+
+    <script>
+        function copyCode() {
+            var code = document.getElementById("codeBlock");
+            var range = document.createRange();
+            range.selectNode(code);
+            window.getSelection().addRange(range);
+            try {
+                var successful = document.execCommand('copy');
+                if (successful) {
+                    alert("Code copied to clipboard!");
+                } else {
+                    alert("Failed to copy code.");
+                }
+            } catch (err) {
+                alert("Error copying code.");
+            }
+            window.getSelection().removeAllRanges();
+        }
+    </script>
 </body>
 </html>
